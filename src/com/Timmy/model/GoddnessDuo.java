@@ -3,17 +3,15 @@ package com.Timmy.model;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.Timmy.jdbc.DBUtil;
 
 public class GoddnessDuo {
-    public void addGodness()
-    {
-    	
-    }
-    public void updateGodness(Goddness g) throws SQLException
+    public void addGodness(Goddness g) throws SQLException
     {
     	String sql="";
     	Connection connection=null;
@@ -34,15 +32,64 @@ public class GoddnessDuo {
         ptmt.setInt(10, g.getIsdel());
         ptmt.execute();
     }
-   
-    public List<Goddness> query()
+    public void updateGodness(String name) throws SQLException
     {
-    	return null;
+    	String sql="";
+    	Connection connection=null;
+    	sql=" update imoocgoddes set sex=1 where user_name= ?";
+		connection=DBUtil.connect();
+		PreparedStatement ptmt=connection.prepareStatement(sql);
+        //ptmt.setString(1,g.
+        ptmt.setString(1, name);
+        ptmt.execute();
+    }
+   
+    public List<Goddness> query() throws SQLException
+    {
+    	List<Goddness> result = new ArrayList<Goddness>();
+    	Goddness goddness =null;
+    	String sqlString="";
+    	sqlString="select User_name,Age,Sex from imoocgoddes";
+    	Connection connection=null;
+    	connection=DBUtil.connect();
+    	PreparedStatement ptmp=connection.prepareStatement(sqlString);
+    	ResultSet rSet=ptmp.executeQuery();
+    	while(rSet.next())
+		{
+    		goddness=new Goddness();
+			goddness.setUser_name(rSet.getString("user_name"));
+			goddness.setAge(rSet.getInt("age"));
+			goddness.setSex(rSet.getInt("sex"));
+			result.add(goddness);
+		}
+    	
+    	
+    	
+    	//PreparedStatement ptmt
+    	return result;
     }
     
-    public Goddness get()
+    public Goddness get(String name) throws SQLException//本模块只提供按名字获取信息
     {
-    	return null;
+    	Goddness goddness=new Goddness();
+    	String sql="";
+    	Connection connection=null;
+    	sql="select User_name,Age,Sex from imoocgoddes where User_name=?";
+		connection=DBUtil.connect();
+		PreparedStatement ptmt=connection.prepareStatement(sql);
+		ptmt.setString(1, name);
+		ResultSet rSet=ptmt.executeQuery();
+		while(rSet.next())
+		{
+			goddness.setUser_name(rSet.getString("user_name"));
+			goddness.setAge(rSet.getInt("age"));
+			goddness.setSex(rSet.getInt("sex"));
+		}
+        
+        
+    	return goddness;
     }
+    
+    
     
 }

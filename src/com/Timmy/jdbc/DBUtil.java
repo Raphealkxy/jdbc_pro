@@ -14,7 +14,7 @@ public class DBUtil {
 	// private Connection connection=null;
 	 static
 	 {
-		 //1.¼ÓÔØÊý¾Ý¿âÇý¶¯
+		 //1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				//connection=DriverManager.getConnection(url, name, password);
@@ -25,25 +25,13 @@ public class DBUtil {
 			}
 			
 			
-			   //2.Á¬½ÓÊý¾Ý¿â
+			   //2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	 }
 	 public static Connection connect() throws SQLException
 	 {
 		 return DriverManager.getConnection(url, name, password);
 	 }
 	   
-	//public static void main(String[] args) throws Exception {
-		
-	    
-	
-		
-		   //3.´´½¨statement¶ÔÏó,Í¨¹ýÊý¾Ý¿âµÄÁ¬½ÓÊµÏÖÊý¾ÝµÄÔöÉ¾¸Ä²é
-//		Statement statement=connection.createStatement();
-//		ResultSet set=statement.executeQuery("select user_name,age from imoocgoddes");
-//		while(set.next())
-//		{
-//			System.out.println(set.getString("user_name")+","+set.getInt("age"));
-//		}
-	//}
+
 	   
 }
