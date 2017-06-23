@@ -1,4 +1,4 @@
-package com.Timmy.jdbc;
+package com.Timmy.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

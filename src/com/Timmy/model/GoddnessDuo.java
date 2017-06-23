@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.Timmy.jdbc.DBUtil;
-
 public class GoddnessDuo {
     public void addGodness(Goddness g) throws SQLException
     {
